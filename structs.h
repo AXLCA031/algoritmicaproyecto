@@ -37,6 +37,10 @@ struct Paciente {
   int edad;
   string telefono;
   int dni;
+  string correoPaciente;
+  string especialidad;
+  string medico;
+
   // TODO: Agregar historial clinico
   int numHistoriaClinica;
   bool SIS;
