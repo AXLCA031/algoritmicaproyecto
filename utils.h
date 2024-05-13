@@ -183,31 +183,43 @@ void crearCita() {
     getline(cin, cita.paciente.telefono);
 
     gotoxy(50, 8);
+    cout << "Correo del paciente: ";
+    getline(cin, cita.paciente.correoPaciente);
+
+    gotoxy(50, 9);
+    cout << "Especialidad: ";
+    getline(cin, cita.paciente.especialidad);
+
+    gotoxy(50, 10);
+    cout << "Medico asignado: ";
+    getline(cin, cita.paciente.medico);
+
+    gotoxy(50, 11);
     cout << "El paciente cuenta con SIS? (1: Si, 0: No): ";
     cin >> cita.paciente.SIS;
     cin.ignore();
 
-    gotoxy(50, 9);
+    gotoxy(50, 12);
     cout << "Motivo de consulta: ";
     getline(cin, cita.descripcion);
 
-    gotoxy(50, 10);
+    gotoxy(50, 13);
     cout << "Fecha a programar (dd/mm/yyyy): ";
     cin >> cita.fecha.dia >> cita.fecha.mes >> cita.fecha.anio;
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el búfer después de usar cin
 
-    gotoxy(50, 11);
+    gotoxy(50, 14);
     cout << "Hora (hh:mm): ";
     cin >> cita.fecha.hora.hora >> cita.fecha.hora.minuto;
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el búfer después de usar cin
 
-    gotoxy(50, 12);
+    gotoxy(50, 15);
     cout << "Asigne un ID a la cita: ";
     cin >> cita.id;
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpia el búfer después de usar cin
 
     citas.push_back(cita);
-    gotoxy(50, 13);
+    gotoxy(50, 16);
     cout << "Cita creada exitosamente." << endl;
     system("pause");
 }
@@ -247,12 +259,18 @@ void mostrarCita(int id){
       gotoxy(47, 16);
       cout << "Telefono del paciente: " << citas[i].paciente.telefono << endl;
       gotoxy(47, 17);
-      cout << "Descripcion de la cita: " << citas[i].descripcion << endl;
+      cout << "Correo del paciente: " << citas[i].paciente.correoPaciente << endl;
       gotoxy(47, 18);
-      cout << "Fecha programada: " << citas[i].fecha.dia << "/" << citas[i].fecha.mes << "/" << citas[i].fecha.anio << endl;
+      cout << "Especialidad: " << citas[i].paciente.especialidad << endl;
       gotoxy(47, 19);
+      cout << "Medico asignado: " << citas[i].paciente.medico << endl;
+      gotoxy(47, 20);
+      cout << "Descripcion de la cita: " << citas[i].descripcion << endl;
+      gotoxy(47, 21);
+      cout << "Fecha programada: " << citas[i].fecha.dia << "/" << citas[i].fecha.mes << "/" << citas[i].fecha.anio << endl;
+      gotoxy(47, 22);
 
-      gotoxy(85, 17);
+      gotoxy(85, 23);
       cout << "SIS Activo:";
       if (citas[i].paciente.SIS) {
         color(2);
@@ -288,6 +306,9 @@ void verCitas() {
         cout << "Cita " << i + 1 << endl;
         cout << "Nombre: " << citas[i].paciente.nombre << " " << citas[i].paciente.apellido << endl;
         cout << "Telefono: " << citas[i].paciente.telefono << endl;
+        cout << "Correo: " << citas[i].paciente.correoPaciente << endl;
+        cout << "Especialidad: " << citas[i].paciente.especialidad << endl;
+        cout << "Medico: " << citas[i].paciente.medico << endl;
         cout << "Descripcion: " << citas[i].descripcion << endl;
         cout << "Fecha Programada: " << citas[i].fecha.dia << "/" << citas[i].fecha.mes << "/" << citas[i].fecha.anio << endl;
         cout << "Hora Programada: " << citas[i].fecha.hora.hora << ":" << citas[i].fecha.hora.minuto << endl;
@@ -345,8 +366,14 @@ void imprimirCita(){
       gotoxy(47, 15);
       archivo<< "Telefono: " << citas[i].paciente.telefono << endl;
       gotoxy(47, 16);
-      archivo<< "Descripcion: " << citas[i].descripcion << endl;
+      cout << "Correo: " << citas[i].paciente.correoPaciente << endl;
       gotoxy(47, 17);
+      cout << "Especialidad: " << citas[i].paciente.especialidad << endl;
+      gotoxy(47, 18);
+      cout << "Medico asignado: " << citas[i].paciente.medico << endl;
+      gotoxy(47, 19);
+      archivo<< "Descripcion: " << citas[i].descripcion << endl;
+      gotoxy(47, 20);
       archivo<< "Fecha programada: " << citas[i].fecha.dia << "/" << citas[i].fecha.mes << "/" << citas[i].fecha.anio << endl;
       break;
     }
